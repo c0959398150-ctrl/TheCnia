@@ -12,10 +12,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ ย้าย verification มาไว้ใน metadata ตรงนี้
 export const metadata: Metadata = {
   title: "TheCnia - คัดสรรสเปกคอมพิวเตอร์และอุปกรณ์ไอที",
   description: "บริการแนะนำการจัดสเปกคอมพิวเตอร์ ตามงบประมาณ อัปเดตราคาล่าสุด พร้อมแหล่งซื้ออุปกรณ์",
-  // ✅ ใส่ Google Verification ไว้ตรงนี้ครับ
   verification: {
     google: "L8Wq7ylhGygHqz6Yw8JVLMtENLbFRsckin_dUN03JKo",
   },
@@ -28,9 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="th" // เปลี่ยนเป็น th เพื่อรองรับภาษาไทย
+      lang="th"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      {/* ✅ ไม่ต้องใส่แท็ก <head> เองแล้ว Next.js จัดการให้ผ่าน metadata ด้านบนครับ */}
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
