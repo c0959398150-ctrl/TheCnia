@@ -17,6 +17,10 @@ interface HardwareItem {
   build_set_id: string
   image_url?: string
 }
+export const metadata = {
+  title: 'TheCnia - คัดสรรสเปกคอมพิวเตอร์และอุปกรณ์ไอทีที่คุณต้องการ',
+  description: 'บริการแนะนำการจัดสเปกคอมพิวเตอร์ ตามงบประมาณที่คุณตั้งไว้ อัปเดตราคาล่าสุด พร้อมแหล่งซื้ออุปกรณ์',
+}
 
 export default function HomePage() {
   const [items, setItems] = useState<HardwareItem[]>([])
