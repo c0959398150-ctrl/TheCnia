@@ -12,7 +12,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// ✅ ย้าย verification มาไว้ใน metadata ตรงนี้
 export const metadata: Metadata = {
   title: "TheCnia - คัดสรรสเปกคอมพิวเตอร์และอุปกรณ์ไอที",
   description: "บริการแนะนำการจัดสเปกคอมพิวเตอร์ ตามงบประมาณ อัปเดตราคาล่าสุด พร้อมแหล่งซื้ออุปกรณ์",
@@ -31,7 +30,6 @@ export default function RootLayout({
       lang="th"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      {/* ✅ ไม่ต้องใส่แท็ก <head> เองแล้ว Next.js จัดการให้ผ่าน metadata ด้านบนครับ */}
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
