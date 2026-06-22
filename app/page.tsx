@@ -143,7 +143,7 @@ export default function HomePage() {
           
           {/* 🔍 ช่องค้นหา */}
           <div style={{ position: 'relative', marginBottom: '1.5rem' }}>
-            <input 
+            <input
               type="text" 
               placeholder="🔍 ค้นหาชื่อฮาร์ดแวร์, ชิ้นส่วน หรือรหัสสเปกคอม..." 
               value={searchTerm}
@@ -271,6 +271,7 @@ export default function HomePage() {
                           <div style={{ width: '100%', maxWidth: '220px', height: '220px', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#030712', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '1px solid rgba(255,255,255,0.05)', padding: '10px', margin: '0 auto' }}>
                             {setCoverImage ? (
                               <img src={setCoverImage} alt={`Cover for ${setId}`} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+                           
                             ) : (
                               <div style={{ textAlign: 'center', color: '#64748b' }}>
                                 <span style={{ fontSize: '40px', display: 'block', marginBottom: '8px' }}>🖥️</span>
@@ -300,7 +301,7 @@ export default function HomePage() {
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
                                   <span style={{ fontSize: '14px', color: '#94a3b8' }}>{comp.price ? `฿${comp.price}` : '—'}</span>
                                   <a href={comp.affiliate_url} target="_blank" rel="noopener noreferrer" style={{ background: '#FF9F00', color: '#030712', textDecoration: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '12px', fontWeight: 'bold' }}>
-                                    สั่งซื้อ 🛒
+                                    ไปสั่งซื้อ 🛒
                                   </a>
                                 </div>
 
@@ -359,11 +360,11 @@ export default function HomePage() {
 
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <div>
-                            <span style={{ display: 'block', fontSize: '11px', color: '#64748b' }}>ราคาพิเศษ</span>
+                            <span style={{ display: 'block', fontSize: '11px', color: '#64748b' }}>ราคา</span>
                             <span style={{ fontSize: '17px', fontWeight: 'bold', color: '#10b981' }}>{item.price ? `฿${item.price}` : 'เช็กราคา'}</span>
                           </div>
                           <a href={item.affiliate_url} target="_blank" rel="noopener noreferrer" style={{ background: 'linear-gradient(135deg, #0072FF 0%, #00F2FE 100%)', color: '#030712', textDecoration: 'none', padding: '8px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: 'bold' }}>
-                            ดูพิกัดส่วนลด
+                            ไปซื้อสินค้า
                           </a>
                         </div>
                       </div>
