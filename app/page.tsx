@@ -17,7 +17,6 @@ interface HardwareItem {
   build_set_id: string
   image_url?: string
 }
- 
 
 export default function HomePage() {
   const [items, setItems] = useState<HardwareItem[]>([])
@@ -107,30 +106,32 @@ export default function HomePage() {
       paddingBottom: '5rem'
     }}>
       
-      {/* 🌐 NAVBAR */}
+      {/* 🌐 NAVBAR - ปรับ flexWrap ให้รองรับจอมือถือเล็ก */}
       <nav style={{ 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
-        padding: '1.25rem 2rem', 
+        padding: '1.25rem 1.5rem', 
         borderBottom: '1px solid rgba(255,255,255,0.05)', 
         backgroundColor: 'rgba(3, 7, 18, 0.8)', 
         position: 'sticky', 
         top: 0, 
         backdropFilter: 'blur(12px)', 
-        zIndex: 50 
+        zIndex: 50,
+        flexWrap: 'wrap',
+        gap: '10px'
       }}>
         <div style={{ fontSize: '22px', fontWeight: 'bold', color: '#fff' }}>
           The<span style={{ color: '#FF9F00' }}>Cnia</span>
         </div>
-        <a href="/admin" style={{ color: '#00F2FE', textDecoration: 'none', fontSize: '14px', border: '1px solid rgba(0, 242, 254, 0.3)', padding: '8px 16px', borderRadius: '20px', background: 'rgba(0, 242, 254, 0.05)', fontWeight: '600' }}>
+        <a href="/admin" style={{ color: '#00F2FE', textDecoration: 'none', fontSize: '14px', border: '1px solid rgba(0, 242, 254, 0.3)', padding: '8px 16px', borderRadius: '20px', background: 'rgba(0, 242, 254, 0.05)', fontWeight: '600', whiteSpace: 'nowrap' }}>
           🛡️ Admin Control
         </a>
       </nav>
 
-      {/* 🚀 HERO */}
-      <header style={{ textAlign: 'center', padding: '4rem 1rem 2rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '2.8rem', fontWeight: '800', marginBottom: '1rem', background: 'linear-gradient(to right, #ffffff, #00F2FE)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+      {/* 🚀 HERO - ปรับขนาดฟอนต์หัวข้อให้ยืดหยุ่นตามหน้าจอ */}
+      <header style={{ textAlign: 'center', padding: '3rem 1rem 1.5rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
+        <h1 style={{ fontSize: 'calc(1.8rem + 1.5vw)', fontWeight: '800', marginBottom: '1rem', background: 'linear-gradient(to right, #ffffff, #00F2FE)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: '1.2' }}>
           คัดสรรสเปกคอม 
         </h1>
         <p style={{ color: '#94a3b8', fontSize: '15px', lineHeight: '1.6' }}>
@@ -139,8 +140,8 @@ export default function HomePage() {
       </header>
 
       {/* 🎛️ CONTROL PANEL (SEARCH & FILTERS) */}
-      <section style={{ maxWidth: '1000px', margin: '0 auto 3rem auto', padding: '0 1.5rem' }}>
-        <div style={{ background: '#070f1e', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '1.75rem', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}>
+      <section style={{ maxWidth: '1000px', margin: '0 auto 3rem auto', padding: '0 1rem' }}>
+        <div style={{ background: '#070f1e', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '1.25rem', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}>
           
           {/* 🔍 ช่องค้นหา */}
           <div style={{ position: 'relative', marginBottom: '1.5rem' }}>
@@ -218,7 +219,7 @@ export default function HomePage() {
       </section>
 
       {/* 📦 MAIN CONTENT */}
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
         
         {error && <div style={{ color: '#ef4444', textAlign: 'center', padding: '1rem' }}>❌ ข้อผิดพลาด: {error}</div>}
         {loading && <p style={{ color: '#64748b', textAlign: 'center' }}>กำลังโหลดข้อมูลพิกัดไอที...</p>}
@@ -249,14 +250,13 @@ export default function HomePage() {
                       return sum + cleanPrice
                     }, 0)
 
-                    {/* 📸 ปรับปรุงส่วนค้นหารูปภาพให้เจาะจงตรวจสอบค่าว่างอย่างแม่นยำ */}
                     const setCoverImage = componentsInSet.find(c => c.image_url && c.image_url.trim() !== '')?.image_url
 
                     return (
-                      <div key={setId} style={{ background: '#070f1e', borderRadius: '16px', border: '1px solid rgba(255, 159, 0, 0.12)', padding: '1.5rem' }}>
+                      <div key={setId} style={{ background: '#070f1e', borderRadius: '16px', border: '1px solid rgba(255, 159, 0, 0.12)', padding: '1.25rem' }}>
                         
-                        {/* ส่วนหัวของเซ็ต */}
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #1e293b', paddingBottom: '12px', marginBottom: '1rem', flexWrap: 'wrap', gap: '12px' }}>
+                        {/* ส่วนหัวของเซ็ต - ปรับปรุง flexWrap ให้จัดวางบนมือถือสวยงาม */}
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #1e293b', paddingBottom: '12px', marginBottom: '1rem', flexWrap: 'wrap', gap: '10px' }}>
                           <span style={{ padding: '4px 12px', borderRadius: '20px', background: 'linear-gradient(135deg, #FF6B00 0%, #FF9F00 100%)', color: '#030712', fontWeight: 'bold', fontSize: '12px' }}>
                             BUILD SET: {String(setId).toUpperCase()}
                           </span>
@@ -265,14 +265,13 @@ export default function HomePage() {
                           </div>
                         </div>
 
-                        {/* 🛠️ แก้ไข Layout ตรงนี้โดยลบ window.innerWidth ออก เพื่อแก้ปัญหาโปรแกรมค้าง/ล่มบน Next.js */}
+                        {/* การจัดหน้า layout ของรูปภาพและรายละเอียดในเซ็ตคอม */}
                         <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', flexDirection: 'row' }}>
                           
                           {/* 🖼️ กล่องแสดงรูปภาพหน้าปกประจำเซ็ต */}
                           <div style={{ width: '100%', maxWidth: '220px', height: '220px', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#030712', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, border: '1px solid rgba(255,255,255,0.05)', padding: '10px', margin: '0 auto' }}>
                             {setCoverImage ? (
                               <img src={setCoverImage} alt={`Cover for ${setId}`} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
-                           
                             ) : (
                               <div style={{ textAlign: 'center', color: '#64748b' }}>
                                 <span style={{ fontSize: '40px', display: 'block', marginBottom: '8px' }}>🖥️</span>
@@ -281,27 +280,27 @@ export default function HomePage() {
                             )}
                           </div>
 
-                          {/* รายการชิ้นส่วนอุปกรณ์ภายในเซ็ตคอม */}
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: '1 1 300px' }}>
+                          {/* รายการชิ้นส่วนอุปกรณ์ภายในเซ็ตคอม - เพิ่ม flex-basis และปรับปรุง flex ภายในให้ตอบสนองจอมือถือ */}
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: '1 1 280px', width: '100%' }}>
                             {componentsInSet.map((comp) => (
-                              <div key={comp.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(3, 7, 18, 0.3)', padding: '8px 14px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.01)' }}>
+                              <div key={comp.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(3, 7, 18, 0.3)', padding: '10px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.01)', flexWrap: 'wrap', gap: '10px' }}>
                                 
                                 {/* รายละเอียดอุปกรณ์ชิ้นนั้นๆ */}
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, flex: 1, paddingRight: '1rem' }}>
-                                  <div style={{ minWidth: 0 }}>
-                                    <span style={{ fontSize: '11px', color: '#FF9F00', background: 'rgba(255,159,0,0.1)', padding: '2px 6px', borderRadius: '4px', marginRight: '8px', fontWeight: '600', display: 'inline-block' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: '150px', flex: '1 1 60%' }}>
+                                  <div style={{ width: '100%' }}>
+                                    <span style={{ fontSize: '11px', color: '#FF9F00', background: 'rgba(255,159,0,0.1)', padding: '2px 6px', borderRadius: '4px', marginRight: '8px', fontWeight: '600', display: 'inline-block', verticalAlign: 'middle' }}>
                                       {comp.category}
                                     </span>
-                                    <span style={{ fontSize: '14px', color: '#e5e7eb', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'inline-block', verticalAlign: 'middle', maxWidth: '80%' }}>
+                                    <span style={{ fontSize: '14px', color: '#e5e7eb', display: 'inline-block', verticalAlign: 'middle', maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                       {comp.title}
                                     </span>
                                   </div>
                                 </div>
 
-                                {/* ปุ่มราคาและ Aff_url */}
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexShrink: 0 }}>
-                                  <span style={{ fontSize: '14px', color: '#94a3b8' }}>{comp.price ? `฿${comp.price}` : '—'}</span>
-                                  <a href={comp.affiliate_url} target="_blank" rel="noopener noreferrer" style={{ background: '#FF9F00', color: '#030712', textDecoration: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '12px', fontWeight: 'bold' }}>
+                                {/* ปุ่มราคาและ Aff_url - ให้ขยายเต็มความกว้างในจอขนาดเล็กมาก */}
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '14px', flex: '1 1 auto', minWidth: '120px' }}>
+                                  <span style={{ fontSize: '14px', color: '#94a3b8', fontWeight: '500', whiteSpace: 'nowrap' }}>{comp.price ? `฿${comp.price}` : '—'}</span>
+                                  <a href={comp.affiliate_url} target="_blank" rel="noopener noreferrer" style={{ background: '#FF9F00', color: '#030712', textDecoration: 'none', padding: '6px 12px', borderRadius: '6px', fontSize: '12px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
                                     ไปสั่งซื้อ 🛒
                                   </a>
                                 </div>
@@ -335,7 +334,8 @@ export default function HomePage() {
                   ไม่พบสินค้าเดี่ยวในหมวดหมู่ที่เลือกขณะนี้...
                 </p>
               ) : (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
+                /* เปลี่ยนจากขนาดคงที่ 280px เป็น 1fr ยืดหยุ่นได้บนมือถือขนาดเล็ก (ขั้นต่ำ 250px) */
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '20px' }}>
                   {individualProducts.map((item) => (
                     <div key={item.id} style={{ background: '#070f1e', borderRadius: '12px', border: '1px solid #1e293b', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                       
@@ -359,12 +359,12 @@ export default function HomePage() {
                           </h3>
                         </div>
 
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px' }}>
                           <div>
                             <span style={{ display: 'block', fontSize: '11px', color: '#64748b' }}>ราคา</span>
-                            <span style={{ fontSize: '17px', fontWeight: 'bold', color: '#10b981' }}>{item.price ? `฿${item.price}` : 'เช็กราคา'}</span>
+                            <span style={{ fontSize: '17px', fontWeight: 'bold', color: '#10b981', whiteSpace: 'nowrap' }}>{item.price ? `฿${item.price}` : 'เช็กราคา'}</span>
                           </div>
-                          <a href={item.affiliate_url} target="_blank" rel="noopener noreferrer" style={{ background: 'linear-gradient(135deg, #0072FF 0%, #00F2FE 100%)', color: '#030712', textDecoration: 'none', padding: '8px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: 'bold' }}>
+                          <a href={item.affiliate_url} target="_blank" rel="noopener noreferrer" style={{ background: 'linear-gradient(135deg, #0072FF 0%, #00F2FE 100%)', color: '#030712', textDecoration: 'none', padding: '8px 14px', borderRadius: '8px', fontSize: '12px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
                             ไปซื้อสินค้า
                           </a>
                         </div>
